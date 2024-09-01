@@ -1,0 +1,2 @@
+# Write your MySQL query statement below
+select e.name from Employee e join (select a.id, count(b.managerId) c from Employee a join Employee b on a.id = b.managerID group by b.managerID) t on e.id = t.id where t.c >= 5
