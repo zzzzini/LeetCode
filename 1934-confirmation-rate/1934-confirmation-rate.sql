@@ -1,0 +1,2 @@
+# Write your MySQL query statement below
+select s.user_id, ifnull(round((k.cnts / k.cnt),2),0) as confirmation_rate from Signups s left join (select c.user_id, count(c.action) cnt, t.cnts from Confirmations c left join (select user_id, count(action) cnts from Confirmations where action = 'confirmed' group by user_id) t on c.user_id = t.user_id group by user_id) k on s.user_id = k.user_id
